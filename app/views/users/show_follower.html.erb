@@ -1,0 +1,15 @@
+<% @user.followers.each do |user| %>
+<div class="col-xs-3 col-md-2">
+  
+
+   <% if user.userface? %>
+    <%= image_tag user.userface %>
+    <% else %>
+    <%= image_tag("userfacenoimage.png", :size => '90x90') %>
+
+    <% end %><br>
+
+   
+     <button class="btn btn-info"><%= link_to user.username, user, :style=>"color:white;"  %></button>
+</div>
+<% end %>

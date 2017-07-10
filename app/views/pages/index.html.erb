@@ -1,0 +1,38 @@
+<header class="business-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12  text-center">
+                    <br><br><br><br><br><br>
+                    <hr>
+                    <h1 class="tagline" id="h1">みんなの図書館</h1>
+                    <hr>
+                    <p id="h1under">本の評価をみんな作ろう </p>
+                    <p id="h1under">本をシェアしよう</p>
+                    <br>
+                    <a><%= link_to 'サインアップ', new_user_registration_path, :class => 'btn btn-primary active'  %></a> 
+                </div>
+            </div>
+        </div>
+    </header>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-6 col-md-3">
+        <%= image_tag("money.png", :size => "210x210", :alt => "アイコン", :class => 'thumbnail', :class => 'img-circle') %>
+        <div class="well" id="money">いらなくなった本などを、フリーマーケットに出すことができます。</div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <%= image_tag("dokusyo.png", :size => "210x210", :alt => "アイコン", :class => 'thumbnail', :class => 'img-circle') %>
+        <div class="well" id="dokusyo">読書の習慣を身につけよう。</div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <%= image_tag("it.png", :size => "210x210", :alt => "アイコン", :class => 'thumbnail', :class => 'img-circle') %>
+         <div class="well" id="it">ITを作って効率的に読書をしよう</div>　
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <%= image_tag("view.png", :size => "210x210", :alt => "アイコン", :class => 'thumbnail', :class => 'img-circle') %>
+　　　　　<div class="well" id="view">読んだ本の評価をみんなに発信しよう!</div>
+    </div>
+</div>
+</div>

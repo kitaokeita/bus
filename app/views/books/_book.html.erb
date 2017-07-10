@@ -1,0 +1,38 @@
+  <div class="container">
+  <div class="row"> 
+    <div class="col-xs-6 col-md-3">
+        <td><%= image_tag book.picture.url if book.picture? %></td>
+           <h3><%= book.title %></h3>
+           <p><%= book.author %></p>
+           <p><%= book.publish %></p>
+           <p><%= book.sort %></p>
+           <p><%= book.like %></p>
+           
+
+                     <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                感想を見る
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><p><%= book.impressions %></p> </a></li>
+                </ul>
+              </div>
+          <%= link_to "", book, method: :delete, data: { confirm: "本当に削除しますか？" }, :class => "btn btn-sm btn-danger glyphicon glyphicon-trash" %>
+
+          <%= link_to "本の詳細", book_path(book) %>
+
+
+                              
+          
+
+
+    
+                
+          </div>
+     
+    　</div>
+           
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+ <table>
+ <% @reservations.each do |reservation| %>
+
+ <%= reservation.consent %>
+ <%= reservation.book.user.username%>
+ <%= reservation.book.title%>
+ 
+ <%= reservation.start_date.strftime('%Y年%m月%d日') %>
+ <%= reservation.end_date.strftime('%Y年%m月%d日') %>
+
+ 
+
+ <% end %>
+ </table>

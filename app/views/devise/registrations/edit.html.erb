@@ -1,0 +1,122 @@
+<body class="csstemplate">
+　<div>
+  <div class="container" id="profile">　
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+
+
+
+
+
+          <h2>プロフィール自己紹介作る、更新</h2>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :class => 'dropzone', html: { method: :put }) do |f| %>
+            <%= render 'partial/deviseErrorMsg' %>
+
+            <div class="form-group">
+              <%= f.label :username %><br />
+              <%= f.text_field :username, :class => 'form-control' %>
+            </div>
+
+
+            <div class="form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, :class => 'form-control', autofocus: true %>
+            </div>
+
+            <label>プロフィール画像</label>
+             
+                <div class="input-group">
+
+        <span class="input-group-btn">
+          <span class="btn btn-small btn-primary btn-inverse" onclick="$(this).parent().find('input[type=file]').click();"><div class='glyphicon glyphicon-file'></div></span>
+          <%= f.file_field :userface, onchange: "$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\\\|/]/).pop());", accept: 'image/jpeg,image/gif,image/png',style: "display: none;"  %>
+        </span>
+        <span class="form-control"></span>
+       </div>
+
+                
+        
+
+
+
+
+            <div class="form-group">
+              <%= f.label :現在の仕事は？ , :class => 'glyphicon glyphicon-user' %><br />
+              <%= f.select :work,options_for_select([["学生", "学生"], ["会社員", "会社員"], ["フリーランス", "フリーランス"],["社長", "社長"],["趣味人", "趣味人"],["専業主婦,主夫", "専業主婦,主夫"],["その他", "その他"]]), {}, :class => 'form-control' %>
+            </div>
+
+
+            <div class="form-group">
+              <%= f.label :普段どんなことをやっていますか？ %><br />
+              <%= f.text_area :life, :class => 'form-control', :placeholder => '普段毎日プログミングを８時間やっています。３年後に自分のサービスを作る予定です。'%>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :好きな本, :class => 'glyphicon glyphicon-book' %><br />
+              <%= f.text_field :likebook, :class => 'form-control',  :placeholder => '本の題名　作者'%>
+            </div>
+
+            <div>
+              <%= f.label :好きな本の理由 %><br />
+              <%= f.text_area :likebookwhy, :class => 'form-control', :placeholder => '理由は３つあります。一つ目は....'%>
+              
+            </div>
+
+             <div>
+              <%= f.label :どんな読書生活を送りたいですか %><br />
+              <%= f.text_area :booklife, :class => 'form-control', :placeholder => '毎朝読書の習慣を身につけたいです' %>
+              
+            </div>
+
+
+
+
+
+
+
+
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <script type="text/javascript">
+                $('#user_userface').bind('change', function() {
+                  var size_in_megabytes = this.files[0].size/1024/1024;
+                  if (size_in_megabytes > 5) {
+                    alert('Maximum file size is 5MB. Please choose a smaller file.');
+                  }
+                });
+              </script>
+
+            <div class="form-group">
+              <%= f.label :password %> <i>(パスワードを変更しない場合はそのままでいいです。)</i><br />
+              <%= f.password_field :password,  :class => 'form-control', autocomplete: "off" %>
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> 文字以上</em>
+              <% end %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation,  :class => 'form-control', autocomplete: "off" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Update" %>
+            </div>
+          <% end %>
+
+          <h3>Cancel my account</h3>
+
+          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+          <%= link_to "Back", :back %>
+
+          </div>
+         </div>
+        </div>
+        </div>
+</body>        

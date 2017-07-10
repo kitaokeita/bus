@@ -1,0 +1,31 @@
+ 
+<table class="table">
+
+<tr>
+ <th>承認ボタン</th>
+ <th>承認状況</th>
+ <th>本の名前</th>
+ <th>名前</th>
+ <th>貸出日</th>
+ <th>返却日</th>
+	
+
+
+</tr>
+<tr>
+ <% @books.each do |book| %>
+ <% book.reservations.each do |reservation| %>
+
+      <td><%= link_to "承認ボタン",book_reservation_path(book,reservation),  :class => 'btn btn-mini btn-danger' %></td>
+       <td><%= reservation.consent %></td>
+      <td><%= book.title %></td>
+      <td><%= reservation.user.username %></td>
+      <td><%= reservation.start_date.strftime('%Y年%m月%d日') %></td>
+       <td><%= reservation.end_date.strftime('%Y年%m月%d日') %></td>
+</tr>       
+
+<% end %>
+<% end %>
+
+</table>
+

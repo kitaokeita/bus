@@ -1,0 +1,123 @@
+ <div id="reservationpadding">
+ <div class="row">
+ 
+
+         <div class="col-sm-4 col-sm-offset-1">
+         <% if @reservation.book.picture? %>
+                <%= image_tag @reservation.book.picture  %>
+                <% else %>
+                <%= image_tag("book.image.png", :size => '300x300') %>
+
+                <% end %>
+            
+
+
+         </div>
+
+              <div class="col-sm-6">   
+
+                  <table class="table table-striped table-bordered">
+                   <thead>
+                      <tr>
+                        <th>借りたい人の名前</th>
+                        <th><%= @reservation.user.username %></th>
+                      </tr>
+                    </thead>
+                     <tbody>
+                       <tr>
+                        <th>本のタイトル</th>
+                        <th> <%= @reservation.book.title %></th>
+                      </tr>
+                    
+                      <tr>
+                        <th>借りたい日</th>
+                        <th><%= @reservation.start_date.strftime('%Y年%m月%d日') %></th>　
+                      </tr>
+                       <tr>
+                        <th>返す日</th>
+                        <th><%= @reservation.end_date.strftime('%Y年%m月%d日') %></th>　
+                      </tr>
+                    
+                    
+                      <tr>
+                        <th>本のタイトル</th>
+                        <th> <%= @reservation.book.title %></th>
+                      </tr>
+                    
+                   
+                      <tr>
+                        <th scope="row">本の著者</th>
+                        <td><%= @reservation.book.author %></td>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="row">出版社</th>
+                        <td><%= @reservation.book.publish %></td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+          </div>
+ </div>
+ </div>  
+
+ </div><br>
+
+<div  class="text-center"> 
+  <label>上の内容でよろしいですか？</label>
+
+
+</div>
+ <!-- 同意ボタン-->
+ <%= form_for @reservation, :url => {:action => :update} do |f| %>
+    <%= f.hidden_field :consent, :value => "いいよ!" %>
+
+    <%= f.submit "いいよ!", class: "btn btn-primary center-block" %>
+
+ 
+ <% end %>
+ <!-- 修正ボタン-->
+ <%= form_for @reservation, :url => {:action => :update} do |f| %>
+    <%= f.hidden_field :consent, :value => "だめよ!" %>
+
+ <div id="damedame">
+ <%= f.submit "だめ", class: "btn btn-danger center-block "  %>
+ </div>
+ <% end %>
+
+ <%= form_for @reservation, :url => {:action => :update} do |f| %>
+
+ <%= f.text_field :address %>
+
+    <%= f.submit "住所!", class: "btn btn-primary center-block" %>
+
+ 
+ <% end %>
+
+ <div class="col-md-8 col-md-offset-2" >
+       <div id="dateupdate">
+       <%= form_for @reservation, :url => {:action => :update} do |f| %>
+
+         <label>借りる日</label>
+          <%= f.date_field :start_date %>
+
+           <label>借りる日</label>
+      <%= f.date_field :end_date %>
+       
+       <%= f.submit "日付更新", class: "btn btn-success btn-wide" %>
+       <% end %>
+
+       </div> 
+ </div> 
+   
+         
+       
+
+
+
+  
+
+
+
+
+

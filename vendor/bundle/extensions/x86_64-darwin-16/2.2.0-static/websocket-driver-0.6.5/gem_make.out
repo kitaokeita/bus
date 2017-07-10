@@ -1,0 +1,11 @@
+/Users/kitaokeita/.rbenv/versions/2.2.3/bin/ruby -r ./siteconf20170328-21234-qhyyn5.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20170328-21234-1ch0n85

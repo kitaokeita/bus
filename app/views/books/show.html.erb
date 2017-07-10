@@ -1,0 +1,144 @@
+<div class="container">
+ <div class="row">
+  <div class="col-xs-6">
+   <%= image_tag @book.picture  %>
+        
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>本のタイトル</th>
+              <th> <%= @book.title %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">本の著者</th>
+              <td><%= @book.author %></td>
+              
+            </tr>
+            <tr>
+              <th scope="row">出版社</th>
+              <td><%= @book.publish %></td>
+              
+            </tr>
+            <tr>
+              <th scope="row">本の種類</th>
+              <td><%= @book.sort %></td>
+              
+            </tr>
+            <tr>
+              <th scope="row">本の種類</th>
+              <td><%= @book.like %></td>
+              
+            </tr>
+          </tbody>
+        </table>
+
+   </div>
+
+     <div class="col-xs-6">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">感想</h3>
+            </div>
+            　<div class="panel-body">
+              　<%= @book.impressions %>
+            　</div>
+          </div>
+     </div>  
+  </div>
+ </div>    
+  
+
+  <%=  @book.user_id %>
+  <%= current_user.id %>
+
+<% if @book.user_id == current_user.id  %>
+
+<% else %>
+ <%= form_for ([@book, @book.reservations.build]) do |f| %>
+
+ <%= f.hidden_field :book_id, value: @book.id %>
+ <%= f.hidden_field :consent, :value => "承認中" %>
+ 
+ 
+   <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+ 
+       <div class="form-group">
+       <div class='input-group date' id='datetimepicker6'>
+      <%= f.text_field :start_date, :class => 'datepicker form-control' %>
+       <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+       </span>
+       </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+         <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+ 
+       <div class="form-group">
+       <div class='input-group date' id='datetimepicker7'>
+<%= f.text_field :end_date, :class => 'datepicker form-control' %>
+       <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+       </span>
+       </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+   <%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>    
+
+
+<% end %>
+
+<% end %>
+
+
+<script type="text/javascript">
+var data = {'data-date-format': 'YYYY-MM-DD' };
+
+var ready = function(){
+  $('.datepicker').attr(data);
+  $('.datepicker').datetimepicker();
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
+
+
+</script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+
+
+    });
+
+</script>

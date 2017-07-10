@@ -1,0 +1,85 @@
+
+ <body class="csstemplate">
+  <div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+         
+
+     
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">プロフィール</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center" class="img-thumbnail">
+                 <% if @user.userface? %> 
+                   <%= image_tag @user.userface %>
+                   <% else %>
+                    <%= image_tag("userfacenoimage.png", :size => "90x90") %>
+                    
+                 <% end %>
+                 <%= render 'follow_form' %>
+                 <section class="stats">
+                <%= render 'stats' %>
+                </section>
+
+                
+                
+
+                 </div>
+                
+           
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table  class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <td>名前</td>
+                        <td><%= @user.username %></td>
+                      </tr>
+                      <tr>
+                        <td>現在の仕事</td>
+                        <td><%= @user.work %></td>
+                      </tr>
+                      <tr>
+                        <td>普段の生活</td>
+                        <td><div class="form-group"><%= @user.life %></div></td>
+                      </tr>
+                   
+                      <tr>
+                            
+                        <td>好きな本</td>
+                        <td><%= @user.likebook %></td>
+                      </tr>
+                        <tr>
+                        <td>好きな本の理由</td>
+                        <td><div class="form-group"><%= @user.likebookwhy %></div></td>
+                      </tr>
+                      <tr>
+                        <td>読書生活</td>
+                        <td><div class="form-group"><%= @user.booklife %></td>　
+                      </tr>　
+                        　
+                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                
+                </div>
+              </div>
+            </div>
+                 
+          </div>
+        </div>
+      </div>
+    </div>
+  
+ <%= render @books %>
+
+
+ </body>
